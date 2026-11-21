@@ -1,0 +1,28 @@
+# jaws project file: the cold archive of Prog Strength, deprecated on
+# 2026-11-21. Fields and behaviour:
+# https://github.com/Jaws-Platform/jaws/blob/main/docs/research-projects.md
+#
+# A research project with one dataset and no task runner, so jaws creates the
+# bucket and nothing else: no network, no launch templates, no instances. No
+# component writes it. The owner uploads the archive once with admin
+# credentials (README, "Uploading the archive").
+version: 1
+project: prog-strength-archive
+repository: Prog-Strength/prog-strength-archive
+
+# The tags every resource carries (through the provider's default_tags).
+# Project, Repository and Environment=prod are cross-checked.
+tags:
+  Organization: jaws
+  Project: prog-strength-archive
+  Environment: prod
+  Repository: Prog-Strength/prog-strength-archive
+  Owner: jwallace145
+
+components:
+  - kind: dataset
+    name: backups
+    bucket: jaws-prog-strength-archive-backups  # <Organization>-<project>-<name>
+    prefix: data/
+    # Kept forever, and an overwritten or deleted object stays recoverable.
+    versioning: true
