@@ -11,9 +11,9 @@ project: prog-strength-archive
 repository: Prog-Strength/prog-strength-archive
 
 # The tags every resource carries (through the provider's default_tags).
-# Project, Repository and Environment=prod are cross-checked.
+# Project, Repository and Environment=prod are cross-checked; jaws adds
+# Organization (this repository's GitHub owner) and ManagedBy itself.
 tags:
-  Organization: jaws
   Project: prog-strength-archive
   Environment: prod
   Repository: Prog-Strength/prog-strength-archive
@@ -22,7 +22,7 @@ tags:
 components:
   - kind: dataset
     name: backups
-    bucket: jaws-prog-strength-archive-backups  # <Organization>-<project>-<name>
+    bucket: jaws-prog-strength-archive-backups  # <name_root>-<project>-<name>
     prefix: data/
     # Kept forever, and an overwritten or deleted object stays recoverable.
     versioning: true
